@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/common.css" type="text/css">
+        <link rel="stylesheet" href="styles/formentry.css" type="text/css">
+        <script src="Javascript/formentry.js"></script>
+        <title>SRM</title>
+    </head>
+    <body>
+        <div id="sidebar_left">
+            <img src="drawables/dummy.png" width="100px" length="100px" alt="SRM Logo"/>
+            <div id="page_links">
+                <a href="formentry.html"><p>Create an Entry</p></a>
+            </div>
+            <div id="page_history">
+                <h3>History</h3>
+                <ul>
+                    <li><a href="history.html">Paper</a></li>
+                    <li><a href="history.html">Workshop</a></li>
+                    <li><a href="history.html">Event</a></li>
+                    <li><a href="history.html">Conferences</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="sidebar_right">
+            <div id="user_info">
+                <img src="drawables/Profile.png" width="100px" height="100px" alt="User Photo"/>
+                <p>Utkarsh Mahan</p>
+            </div>
+            <div id="filtering">
+                <label>Filter</label>
+                <input type = "checkbox"
+                    id = "month"
+                    value = "month" />
+                <label for = "month">Month</label>
+                <input type = "checkbox"
+                    id = "year"
+                    value = "year" />
+                <label for = "year">Year</label>
+            </div>
+        </div>
+        <div id="main">
+            <header>
+                <div id="navigation">
+                    <h1>Make an Entry</h1>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div id="chooser" class="radio">
+                <h2>Type of entry</h2>
+                <input type="radio" id="paper" name="Entry" value="paper" onclick="setDisplay('paperform', true); setDisplay('workshopform', false); setDisplay('eventform', false); setDisplay('conferenceform', false);">
+                <label for="paper" >Paper</label>
+                <input type="radio" id="workshop" name="Entry" value="Workshop" onclick="setDisplay('paperform', false); setDisplay('workshopform', true); setDisplay('eventform', false); setDisplay('conferenceform', false);">
+                <label for="Workshop">Workshop</label>
+                <input type="radio" id="event" name="Entry" value="event" onclick="setDisplay('paperform', false); setDisplay('workshopform', false); setDisplay('eventform', true); setDisplay('conferenceform', false);">
+                <label for="event">Event</label>
+                <input type="radio" id="confernece" name="Entry" value="conference" onclick="setDisplay('paperform', false); setDisplay('workshopform', false); setDisplay('eventform', false); setDisplay('conferenceform', true);">
+                <label for="conference">Conference</label>
+            </div>
+                <div id="paperform" style="display: none;">
+                    <form>
+                        <label for="title">Title of Paper:</label>
+                        <label for="publisher">Publisher Name</label><br>
+                        <input type="text" id="title" name="title">
+                        <input type="text" id="publisher" name="publisher"><br>
+                        <label for="volume">Volume</label>
+                        <input type="text" id="volume" name="volume"><br>
+                        <label for="pgno">Page Number</label><br>
+                        <input type="text" id="pgno" name="pgno"><br>
+                        <label for="dop">Date of Publication:</label>
+                        <input class="month-date" type="date" name="dop" id="dop">
+                        <p>Type of Paper</p>
+                        <div>
+                            <input type="radio" id="sci" name="type" value="sci" >
+                        <label for="sci" >SCI</label>
+                        <input type="radio" id="wos" name="type" value="wos" >
+                        <label for="wos">WOS</label>
+                        <input type="radio" id="scopus" name="type" value="scopus" >
+                        <label for="scopus" >Scopus</label>
+                        </div>
+                        <p>Number of Authors</p>
+                        <input type="number" placeholder="Choose a Value" min="1" max="10" onfocusout="Authors()" id="author_numbers">
+                        <div id="box"></div>
+                       
+                        <label for="snip">SNIP:</label>
+                        <input type="number" placeholder="SNIP Value" name="snip" id="snip" step="any">
+                        <label for="impf">Impact Factor:</label>
+                        <input type="number" name="impf" id="impf" step="any">
+                        <label for="pdf">Attach the pdf of paper</label>
+                        <input type="file" name="pdf" id="pdf">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+                <div id="conferenceform" style="display: none;">
+                    <form>
+                        <p>Type of Conference</p>
+                        <div>
+                            <input type="radio" id="national" name="type" value="national" >
+                        <label for="national" >National</label>
+                        <input type="radio" id="international" name="type" value="international" >
+                        <label for="international">International</label>
+                        </div>
+                        <p>Number of Authors</p>
+                        <input type="number" placeholder="Choose a Value" min="1" max="10" onfocusout="Authors()" id="author_numbers">
+                        <div id="box"></div>
+                        <label for="title">Title of Paper:</label><br>
+                        <input type="text" id="title" name="title"><br>
+                        <label for="noc">Name of Conference</label><br>
+                        <input type="text" id="noc" name="noc"><br>
+                        <label for="poc">Place of Conference</label><br>
+                        <input type="text" id="poc" name="poc"><br>
+                        <label for="from">From</label>
+                        <input class="month-date" type="date" name="from" id="from">
+                        <label for="to">To</label>
+                        <input class="month-date" type="date" name="to" id="to">
+                        <label for="pdf">Attach Proof</label>
+                        <input type="file" name="pdf" id="pdf">
+                        <input type="submit" value="Submit">
+                        </form>
+                </div>
+                <div id="workshopform" style="display: none;">
+                    <form>
+                        <p>Type of Workshop</p>
+                        <div>
+                            <input type="radio" id="workshop" name="type" value="workshop" >
+                        <label for="workshop" >Workshop</label>
+                        <input type="radio" id="fdp" name="type" value="fdp" >
+                        <label for="fdp">FDP</label>
+                        </div>
+                        <p>Subtype</p>
+                        <div>
+                            <input type="radio" id="internal" name="type" value="internal" >
+                        <label for="internal" >Internal</label>
+                        <input type="radio" id="external" name="type" value="external" >
+                        <label for="external">External</label>
+                        </div>
+                        <label for="topic">Topic</label><br>
+                        <input type="text" id="topic" name="topic"><br>
+                        <label for="conducted">Conducted By:</label><br>
+                        <input type="text" id="conducted" name="conducted"><br>
+                        <label for="place">Place</label><br>
+                        <input type="text" id="place" name="place"><br>
+                        <label for="date">Date</label>
+                        <input class="month-date" type="date" name="date" id="date">
+                        <input type="submit" value="Submit">
+                        </form>
+                </div>
+                <div id="eventform" style="display: none;">
+                    <form>
+                        <p>Type of Event</p>
+                        <div>
+                            <input type="radio" id="workshop" name="type" value="workshop" >
+                        <label for="workshop" >Workshop</label>
+                        <input type="radio" id="fdp" name="type" value="fdp" >
+                        <label for="fdp">FDP</label>
+                        </div>
+                        <label for="title">Title:</label><br>
+                        <input type="text" id="title" name="title"><br>
+                        <label for="role">Your Role:</label><br>
+                        <input type="text" id="role" name="role"><br>
+                        <label for="date">Date</label>
+                        <input class="month-date" type="date" name="date" id="date">
+                        <label for="noi">Number Of Internals</label>
+                        <input type="number" min="0" name="noi" id="noi">
+                        <label for="noe">Number Of Externals</label>
+                        <input type="number" min="0" name="noe" id="noe">
+                        <label for="brochure">Upload Brochure</label>
+                        <input type="file" name="brochure" id="brochure">
+                        <label for="photos">Upload Photos</label>
+                        <input type="file" name="photos" id="photos">
+                        <input type="submit" value="Submit">
+                        </form>
+                </div>
+        </div>
+    </body>
+</html>
